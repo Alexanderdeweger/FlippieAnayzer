@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class OptieScherm extends JFrame{
+    boolean owner = false;
     public OptieScherm(){
         setTitle("Flippielyzer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +29,7 @@ public class OptieScherm extends JFrame{
 
         filteren.addActionListener((ActionEvent e) -> {
             dispose();
-            SwingUtilities.invokeLater(Filteren::new);
+            SwingUtilities.invokeLater(() -> new Filteren(owner));
         });
 
         setVisible(true);

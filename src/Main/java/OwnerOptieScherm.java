@@ -11,6 +11,7 @@ public class OwnerOptieScherm extends OptieScherm{
 
     public OwnerOptieScherm() {
         super();
+        super.owner = true;
         setSize(800, 400);
 
         JButton refreshen = new JButton("Refreshen");
@@ -20,6 +21,8 @@ public class OwnerOptieScherm extends OptieScherm{
         JButton accountMaken = new JButton("Nieuw account creeren");
         accountMaken.setBounds(540, 30, 200, 25);
         add(accountMaken);
+
+
 
         refreshen.addActionListener((ActionEvent _) -> {
             try {

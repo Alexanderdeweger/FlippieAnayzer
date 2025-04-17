@@ -8,10 +8,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Filteren extends JFrame {
-    public Filteren() {
+    public Filteren(boolean owner) {
 
         setTitle("Filteren");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(300, 300);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -195,14 +195,21 @@ public class Filteren extends JFrame {
 
         });
 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (owner) {
+                    new OwnerOptieScherm(); // open ander venster voordat het sluit
+                } else {
+                    new OptieScherm();
+                }
+            }
+        });
+
 
         setVisible(true);
 
 
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(Filteren::new);
     }
 }
 

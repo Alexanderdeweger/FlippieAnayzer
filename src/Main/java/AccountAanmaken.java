@@ -49,7 +49,7 @@ public class AccountAanmaken extends JFrame{
         add(confirmNieuwWachtwoordVeld);
 
         JButton confirmKnop = new JButton("Maak account");
-        confirmKnop.setBounds(140, 225, 140, 30);
+        confirmKnop.setBounds(225, 225, 140, 30);
         add(confirmKnop);
 
         confirmKnop.addActionListener((ActionEvent _) -> {
@@ -78,6 +78,14 @@ public class AccountAanmaken extends JFrame{
                 JOptionPane.showMessageDialog(this, "Geen velden leeglaten :D");
             }
         });
+
+        JButton terugKnop = new JButton("Optiescherm");
+        terugKnop.setBounds(50,225, 150, 30);
+        terugKnop.addActionListener(e -> {
+            dispose(); // sluit dit venster
+            SwingUtilities.invokeLater(() -> new OwnerOptieScherm()); // opent nieuw venster
+        });
+        add(terugKnop);
 
         addWindowListener(new WindowAdapter() {
             @Override
