@@ -26,10 +26,10 @@ public class OptieScherm extends JFrame{
             SwingUtilities.invokeLater(TabelAdvertenties::new);
         });
 
-//        filteren.addActionListener((ActionEvent e) -> {
-//            dispose();
-//            SwingUtilities.invokeLater();
-//        });
+        filteren.addActionListener((ActionEvent e) -> {
+            dispose();
+            SwingUtilities.invokeLater(Filteren::new);
+        });
 
         setVisible(true);
     }

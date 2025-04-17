@@ -2,6 +2,8 @@ package Main.java;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +15,7 @@ public class AccountAanmaken extends JFrame{
 
     public AccountAanmaken(){
         setTitle("Account aanmaken");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 300);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -74,6 +76,13 @@ public class AccountAanmaken extends JFrame{
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Geen velden leeglaten :D");
+            }
+        });
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new OwnerOptieScherm(); // open ander venster voordat het sluit
             }
         });
 

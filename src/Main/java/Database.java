@@ -9,7 +9,7 @@ public class Database {
         String url = "jdbc:mysql://localhost:3306/flippielyzer";
         String username = "root";
         String password = "Tyson1990!";
-        public Connection connect (){
+        public Connection connect(){
                 Connection con = null;
                 // connecten tot de database
                 try {

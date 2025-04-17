@@ -51,7 +51,9 @@ public class LoginScherm extends JFrame {
                         break;
                     }
                     username = rs.getString("username");
+                    System.out.println(username);
                     password = rs.getString("password");
+                    System.out.println(password);
 
                     if (gebruiker.equals(username) && wachtwoord.equals(password)) {
                         ingelogd = true;

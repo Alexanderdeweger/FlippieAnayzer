@@ -2,6 +2,8 @@ package Main.java;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.*;
 import java.util.Vector;
 
@@ -12,7 +14,7 @@ public class TabelAdvertenties extends JFrame{
         setTitle("Advertentiegegevens");
         setSize(800, 400);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JTable table = new JTable();
         add(new JScrollPane(table));
@@ -25,8 +27,41 @@ public class TabelAdvertenties extends JFrame{
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Fout bij laden van data:\n" + e.getMessage());
         }
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new OptieScherm(); // open ander venster voordat het sluit
+            }
+        });
 
         setVisible(true);
+    }
+
+    public TabelAdvertenties(ResultSet rs) {
+        setTitle("Advertentiegegevens");
+        setSize(800, 400);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JTable table = new JTable();
+        add(new JScrollPane(table));
+
+        try  {
+            DefaultTableModel model = buildTableModel(rs);
+            table.setModel(model);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Fout bij laden van data:\n" + e.getMessage());
+        }
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new OptieScherm(); // open ander venster voordat het sluit
+            }
+        });
+
+        setVisible(true);
+
     }
 
     public static DefaultTableModel buildTableModel(ResultSet rs) throws SQLException {
