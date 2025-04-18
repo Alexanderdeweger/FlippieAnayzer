@@ -178,7 +178,7 @@ public class Filteren extends JFrame {
                 sql += " AND datumgepost <= \"" + maxDatumSql + "\"";
             }
             if (gemBereik > 0) {
-                sql += " AND DATEDIFF(CURDATE(), datumgepost) > " + gemBereik;
+                sql += " AND DATEDIFF(CURRENT_DATE, datumgepost) > " + gemBereik;
             }
             Database database = new Database();
             Connection conn = database.connect();
@@ -212,7 +212,3 @@ public class Filteren extends JFrame {
 
     }
 }
-
-/*
-vorige filterlijsten gebruiken
- */

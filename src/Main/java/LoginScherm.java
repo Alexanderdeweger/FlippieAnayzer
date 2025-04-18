@@ -5,12 +5,11 @@ import java.awt.event.ActionEvent;
 import java.sql.*;
 
 public class LoginScherm extends JFrame {
-    private final JTextField gebruikersnaamVeld;
-    private final JPasswordField wachtwoordVeld;
+    public boolean ingelogd = false;
     Database database = new Database();
-    Connection con = database.connect();
-    Statement stmt = con.createStatement();
-    ResultSet rs = stmt.executeQuery("select * from gebruikers");
+    public Connection con = database.connect();
+    public Statement stmt = con.createStatement();
+    public ResultSet rs = stmt.executeQuery("select * from gebruikers");
 
     public LoginScherm() throws SQLException {
         setTitle("Login");
@@ -23,7 +22,7 @@ public class LoginScherm extends JFrame {
         gebruikerLabel.setBounds(30, 30, 120, 25);
         add(gebruikerLabel);
 
-        gebruikersnaamVeld = new JTextField();
+        JTextField gebruikersnaamVeld = new JTextField();
         gebruikersnaamVeld.setBounds(160, 30, 180, 25);
         add(gebruikersnaamVeld);
 
@@ -31,7 +30,7 @@ public class LoginScherm extends JFrame {
         wachtwoordLabel.setBounds(30, 70, 120, 25);
         add(wachtwoordLabel);
 
-        wachtwoordVeld = new JPasswordField();
+        JPasswordField wachtwoordVeld = new JPasswordField();
         wachtwoordVeld.setBounds(160, 70, 180, 25);
         add(wachtwoordVeld);
 
@@ -44,7 +43,7 @@ public class LoginScherm extends JFrame {
             String wachtwoord = new String(wachtwoordVeld.getPassword());
             String username;
             String password;
-            boolean ingelogd = false;
+
             while(true) {
                 try {
                     if (!rs.next()){
