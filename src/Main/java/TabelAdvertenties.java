@@ -10,7 +10,7 @@ import java.util.Vector;
 public class TabelAdvertenties extends JFrame{
     Database database = new Database();
     Connection con = database.connect();
-    public TabelAdvertenties() {
+    public TabelAdvertenties(boolean owner) {
         setTitle("Advertentiegegevens");
         setSize(800, 400);
         setLocationRelativeTo(null);
@@ -30,14 +30,18 @@ public class TabelAdvertenties extends JFrame{
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new OptieScherm(); // open ander venster voordat het sluit
+                if (owner) {
+                    new OwnerOptieScherm();
+                } else {
+                    new OptieScherm();
+                }
             }
         });
 
         setVisible(true);
     }
 
-    public TabelAdvertenties(ResultSet rs) {
+    public TabelAdvertenties(ResultSet rs, boolean owner) {
         setTitle("Advertentiegegevens");
         setSize(800, 400);
         setLocationRelativeTo(null);
@@ -56,7 +60,11 @@ public class TabelAdvertenties extends JFrame{
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new OptieScherm(); // open ander venster voordat het sluit
+                if (owner) {
+                    new OwnerOptieScherm();
+                } else {
+                    new OptieScherm(); // open ander venster voordat het sluit
+                }
             }
         });
 

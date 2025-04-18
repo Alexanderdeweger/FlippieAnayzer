@@ -24,7 +24,7 @@ public class OptieScherm extends JFrame{
 
         advertentiesTonen.addActionListener((ActionEvent _) -> {
             dispose();
-            SwingUtilities.invokeLater(TabelAdvertenties::new);
+            SwingUtilities.invokeLater(() -> new TabelAdvertenties(owner));
         });
 
         filteren.addActionListener((ActionEvent e) -> {

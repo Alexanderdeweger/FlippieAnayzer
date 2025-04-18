@@ -187,7 +187,7 @@ public class Filteren extends JFrame {
                 stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
                 dispose();
-                SwingUtilities.invokeLater(() -> new TabelAdvertenties(rs));
+                SwingUtilities.invokeLater(() -> new TabelAdvertenties(rs, owner));
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);

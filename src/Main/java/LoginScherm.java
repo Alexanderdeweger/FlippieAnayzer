@@ -76,15 +76,4 @@ public class LoginScherm extends JFrame {
 
         setVisible(true);
     }
-
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            try {
-                new LoginScherm();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
 }
