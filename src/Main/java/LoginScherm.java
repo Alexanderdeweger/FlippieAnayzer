@@ -5,11 +5,11 @@ import java.awt.event.ActionEvent;
 import java.sql.*;
 
 public class LoginScherm extends JFrame {
-    public boolean ingelogd = false;
+    protected boolean ingelogd = false;
     Database database = new Database();
-    public Connection con = database.connect();
-    public Statement stmt = con.createStatement();
-    public ResultSet rs = stmt.executeQuery("select * from gebruikers");
+    protected Connection con = database.connect();
+    protected Statement stmt = con.createStatement();
+    protected ResultSet rs = stmt.executeQuery("select * from gebruikers");
 
     public LoginScherm() throws SQLException {
         setTitle("Login");

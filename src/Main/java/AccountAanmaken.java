@@ -9,9 +9,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AccountAanmaken extends JFrame{
-    private final JTextField nieuwGebruikersnaamVeld;
-    private final JPasswordField nieuwWachtwoordVeld;
-    private final JPasswordField confirmNieuwWachtwoordVeld;
+    protected final JTextField nieuwGebruikersnaamVeld;
+    protected final JPasswordField nieuwWachtwoordVeld;
+    protected final JPasswordField confirmNieuwWachtwoordVeld;
+    public JButton confirmKnop;
 
     public AccountAanmaken(){
         setTitle("Account aanmaken");
@@ -48,7 +49,7 @@ public class AccountAanmaken extends JFrame{
         confirmNieuwWachtwoordVeld.setBounds(160, 110, 180, 25);
         add(confirmNieuwWachtwoordVeld);
 
-        JButton confirmKnop = new JButton("Maak account");
+        confirmKnop = new JButton("Maak account");
         confirmKnop.setBounds(225, 225, 140, 30);
         add(confirmKnop);
 
