@@ -8,6 +8,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Filteren extends JFrame {
+    public JButton filterKnop;
+    public JTextField minDatumveld;
+    public JTextField maxDatumveld;
+    public JTextField bereikVeld;
+    public JTextField gemBereikVeld;
+    public JComboBox<String> actiefComboBox;
+    public JComboBox<String> leeftijdComboBox;
+
     public Filteren(boolean owner) {
 
         setTitle("Filteren");
@@ -22,7 +30,7 @@ public class Filteren extends JFrame {
         minDatum.setBounds(25, 15, 120, 25);
         add(minDatum);
 
-        JTextField minDatumveld = new JTextField("yyyy-mm-dd");
+        minDatumveld = new JTextField("yyyy-mm-dd");
         minDatumveld.setBounds(150, 15, 120, 25);
         minDatumveld.setForeground(Color.GRAY);
         add(minDatumveld);
@@ -49,7 +57,7 @@ public class Filteren extends JFrame {
         maxDatumLabel.setBounds(25, 45, 120, 25);
         add(maxDatumLabel);
 
-        JTextField maxDatumveld = new JTextField("yyyy-mm-dd");
+        maxDatumveld = new JTextField("yyyy-mm-dd");
         maxDatumveld.setBounds(150, 45, 120, 25);
         maxDatumveld.setForeground(Color.GRAY);
         add(maxDatumveld);
@@ -77,7 +85,7 @@ public class Filteren extends JFrame {
         bereikLabel.setBounds(25, 75, 120, 25);
         add(bereikLabel);
 
-        JTextField bereikVeld = new JTextField();
+        bereikVeld = new JTextField();
         bereikVeld.setBounds(150, 75, 120, 25);
         add(bereikVeld);
 
@@ -94,7 +102,7 @@ public class Filteren extends JFrame {
         gemBereikLabel.setBounds(25, 105, 175, 25);
         add(gemBereikLabel);
 
-        JTextField gemBereikVeld = new JTextField();
+        gemBereikVeld = new JTextField();
         gemBereikVeld.setBounds(150, 105, 120, 25);
         add(gemBereikVeld);
 
@@ -114,7 +122,7 @@ public class Filteren extends JFrame {
         add(actiefLabel);
 
         String[] actiefOpties = {"-", "Actief", "Inactief"};
-        JComboBox<String> actiefComboBox = new JComboBox<>(actiefOpties);
+        actiefComboBox = new JComboBox<>(actiefOpties);
         actiefComboBox.setBounds(150, 135, 120, 25);
         add(actiefComboBox);
 
@@ -124,11 +132,11 @@ public class Filteren extends JFrame {
         add(leeftijdLabel);
 
         String[] leeftijdOpties = {"-", "18-25", "26-35", "36-45", "46-60", "60+"};
-        JComboBox<String> leeftijdComboBox = new JComboBox<>(leeftijdOpties);
+        leeftijdComboBox = new JComboBox<>(leeftijdOpties);
         leeftijdComboBox.setBounds(150, 165, 120, 25);
         add(leeftijdComboBox);
 
-        JButton filterKnop = new JButton("Filteren");
+        filterKnop = new JButton("Filteren");
         filterKnop.setBounds(100, 210, 100, 30);
         add(filterKnop);
 

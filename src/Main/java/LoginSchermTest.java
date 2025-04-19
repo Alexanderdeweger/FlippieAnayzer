@@ -31,19 +31,18 @@ public class LoginSchermTest {
 
     @Test
     public void testLoginWithCorrectCredentials() throws SQLException, InvocationTargetException, InterruptedException {
-        // Zorg dat GUI op de EDT draait
+
         SwingUtilities.invokeAndWait(() -> {
             try {
+
                 LoginScherm loginScherm = new LoginScherm() {
                     {
-                        // Herschrijf connectie + query naar onze test-database
                         this.con = connection;
                         this.stmt = con.createStatement();
                         this.rs = stmt.executeQuery("SELECT * FROM gebruikers");
                     }
                 };
 
-                // Zoek de velden via het frame
                 JTextField gebruikersnaamVeld = (JTextField) findComponentByType(loginScherm, JTextField.class, 0);
                 JPasswordField wachtwoordVeld = (JPasswordField) findComponentByType(loginScherm, JPasswordField.class, 0);
                 JButton loginKnop = (JButton) findComponentByType(loginScherm, JButton.class, 0);
@@ -52,7 +51,7 @@ public class LoginSchermTest {
                 wachtwoordVeld.setText("admin123");
                 loginKnop.doClick();
 
-                assertTrue(loginScherm.ingelogd); // toegang tot protected of public maken als nodig
+                assertTrue(loginScherm.ingelogd);
                 loginScherm.dispose();
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -66,14 +65,12 @@ public class LoginSchermTest {
             try {
                 LoginScherm loginScherm = new LoginScherm() {
                     {
-                        // Herschrijf connectie + query naar onze test-database
                         this.con = connection;
                         this.stmt = con.createStatement();
                         this.rs = stmt.executeQuery("SELECT * FROM gebruikers");
                     }
                 };
 
-                // Vul verkeerde credentials in
                 JTextField gebruikersnaamVeld = (JTextField) findComponentByType(loginScherm, JTextField.class, 0);
                 JPasswordField wachtwoordVeld = (JPasswordField) findComponentByType(loginScherm, JPasswordField.class, 0);
                 JButton loginKnop = (JButton) findComponentByType(loginScherm, JButton.class, 0);
@@ -82,7 +79,6 @@ public class LoginSchermTest {
                 wachtwoordVeld.setText("verkeerdWachtwoord");
                 loginKnop.doClick();
 
-                // Check of ingelogd false is via reflectie
                 Field ingelogdField = LoginScherm.class.getDeclaredField("ingelogd");
                 ingelogdField.setAccessible(true);
                 boolean ingelogd = ingelogdField.getBoolean(loginScherm);
@@ -96,7 +92,6 @@ public class LoginSchermTest {
         });
     }
 
-    // Helperfunctie om componenten op type en index te vinden
     private Component findComponentByType(JFrame frame, Class<?> componentClass, int index) {
         Component[] components = frame.getContentPane().getComponents();
         int count = 0;
@@ -110,6 +105,6 @@ public class LoginSchermTest {
             }
         }
 
-        return null; // als niet gevonden
+        return null;
     }
 }

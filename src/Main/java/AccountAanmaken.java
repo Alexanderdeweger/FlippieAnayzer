@@ -31,6 +31,7 @@ public class AccountAanmaken extends JFrame{
 
         nieuwGebruikersnaamVeld = new JTextField();
         nieuwGebruikersnaamVeld.setBounds(160, 30, 180, 25);
+        nieuwGebruikersnaamVeld.setName("usernameveld");
         add(nieuwGebruikersnaamVeld);
 
         JLabel wachtwoordLabel = new JLabel("Wachtwoord:");
@@ -39,6 +40,7 @@ public class AccountAanmaken extends JFrame{
 
         nieuwWachtwoordVeld = new JPasswordField();
         nieuwWachtwoordVeld.setBounds(160, 70, 180, 25);
+        nieuwWachtwoordVeld.setName("wachtwoordveld");
         add(nieuwWachtwoordVeld);
 
         JLabel confirmWachtwoordLabel = new JLabel("Herhaal wachtwoord");
@@ -47,10 +49,12 @@ public class AccountAanmaken extends JFrame{
 
         confirmNieuwWachtwoordVeld = new JPasswordField();
         confirmNieuwWachtwoordVeld.setBounds(160, 110, 180, 25);
+        confirmNieuwWachtwoordVeld.setName("confirm wachtwoordveld");
         add(confirmNieuwWachtwoordVeld);
 
         confirmKnop = new JButton("Maak account");
         confirmKnop.setBounds(225, 225, 140, 30);
+        confirmKnop.setName("confirmKnop");
         add(confirmKnop);
 
         confirmKnop.addActionListener((ActionEvent _) -> {
@@ -60,7 +64,7 @@ public class AccountAanmaken extends JFrame{
             if (!username.isEmpty() && !wachtwoord1.isEmpty() && !wachtwoord2.isEmpty()) {
 
                 if (!wachtwoord1.equals(wachtwoord2)) {
-                    JOptionPane.showMessageDialog(this, "Wachtwoorden kmen niet overeen");
+                    JOptionPane.showMessageDialog(this, "Wachtwoorden komen niet overeen");
                 } else {
                     Database database = new Database();
                     Connection con = database.connect();
